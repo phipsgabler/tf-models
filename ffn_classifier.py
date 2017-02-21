@@ -5,10 +5,10 @@ from builders import fully_connected_layer
 
 
 class FFNClassifier(Model):
-    def __init__(self, n_input, hidden_layers, n_classes, optimizer):
-        self.n_input = n_input
-        self.hidden_layers = hidden_layers
+    def __init__(self, input_size, n_classes, hidden_layers, optimizer):
+        self.input_size = input_size
         self.n_classes = n_classes
+        self.hidden_layers = hidden_layers
         self.optimizer = optimizer
 
         super().__init__()
@@ -16,7 +16,7 @@ class FFNClassifier(Model):
 
     @graph_property
     def inputs(self):
-        return tf.placeholder(tf.float32, shape = (None, self.n_input))
+        return tf.placeholder(tf.float32, shape = (None, self.input_size))
 
     
     @graph_property
@@ -28,7 +28,7 @@ class FFNClassifier(Model):
     def logits(self):
         # construct hidden layers
         layers = [self.inputs]
-        layer_sizes = [self.n_input] + self.hidden_layers
+        layer_sizes = [self.input_size] + self.hidden_layers
 
         for i in range(1, len(layer_sizes)):
             layers.append(fully_connected_layer('full{}'.format(i),
