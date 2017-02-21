@@ -110,8 +110,8 @@ class Model(abc.ABC):
         return self._session.run(self.predictions, {self.inputs: batch})
 
     
-    # def save_checkpoint(self, checkpoint_path):
-    #     return self._saver.save(self._session, checkpoint_path, self.global_step)
+    def save_checkpoint(self, checkpoint_path):
+        return self._saver.save(self._session, checkpoint_path, self.global_step)
     
-    # def restore_from_checkpoint(self, checkpoint_path):
-    #     self._saver.restore(self._session, checkpoint_path)
+    def restore_from_checkpoint(self, checkpoint_path):
+        self._saver.restore(self._session, checkpoint_path)

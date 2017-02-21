@@ -11,6 +11,9 @@ def ffn_example():
         
         model.train_on_batch([[1.0, 2.0], [2.0, 1.0]], [0, 1])
         print(model.accuracy_on_batch([[1.0, 2.0], [2.0, 1.0]], [0, 1]))
+        ckpt = model.save_checkpoint('bla.ckpt')
+        print(ckpt)
+        model.restore_from_checkpoint(ckpt)
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
