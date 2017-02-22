@@ -1,10 +1,10 @@
 import numpy as np
 import tensorflow as tf
-from model import Model, graph_property
+from model import ModelBase, graph_property
 from builders import fully_connected_layer
 
 
-class FFNClassifier(Model):
+class FFNClassifier(ModelBase):
     def __init__(self, input_size, n_classes, hidden_layers, optimizer):
         self.input_size = input_size
         self.n_classes = n_classes

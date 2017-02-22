@@ -1,9 +1,9 @@
 import numpy as np
 import tensorflow as tf
-from model import Model, graph_property
+from model import ModelBase, graph_property
 from builders import fully_connected_layer
 
-class RNNClassifier(Model):
+class RNNClassifier(ModelBase):
     def __init__(self,
                  seq_length,
                  input_size,

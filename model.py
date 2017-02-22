@@ -25,7 +25,7 @@ def graph_property(getter):
     return decorated
 
 
-class Model(abc.ABC):
+class ModelBase(abc.ABC):
     def __init__(self):
         self._session = None
         self._graph = tf.Graph()
