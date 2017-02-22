@@ -91,7 +91,7 @@ class ModelBase(abc.ABC):
     @graph_property
     def accuracy(self):
         correct_predictions = tf.equal(self.predictions, self.targets)
-        return tf.reduce_mean(tf.cast(correct_predictions, tf.float32))
+        return tf.reduce_mean(tf.cast(correct_predictions, tf.float64))
 
 
     def train_on_batch(self, batch, targets):

@@ -25,7 +25,7 @@ class RNNClassifier(ModelBase):
 
     @graph_property
     def inputs(self):
-        return tf.placeholder(tf.float32, [None, self.seq_length, self.input_size])
+        return tf.placeholder(tf.float64, [None, self.seq_length, self.input_size])
 
     
     @graph_property
@@ -40,7 +40,7 @@ class RNNClassifier(ModelBase):
         else:
             cell = tf.nn.rnn_cell.BasicRNNCell(self.recurrent_layer_size)
         
-        rec_output, rec_state = tf.nn.dynamic_rnn(cell, self.inputs, dtype = tf.float32)
+        rec_output, rec_state = tf.nn.dynamic_rnn(cell, self.inputs, dtype = tf.float64)
         return rec_output[:, -1, :] # extract only last output of recurrent part
 
     

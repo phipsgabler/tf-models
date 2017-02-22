@@ -16,7 +16,7 @@ class FFNClassifier(ModelBase):
 
     @graph_property
     def inputs(self):
-        return tf.placeholder(tf.float32, shape = (None, self.input_size))
+        return tf.placeholder(tf.float64, shape = (None, self.input_size))
 
     
     @graph_property
