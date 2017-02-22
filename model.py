@@ -30,7 +30,7 @@ class Model(abc.ABC):
         self._session = None
         self._graph = tf.Graph()
         
-        # initializing all properties
+        # initialize all properties
         fields = (k for k, v in vars(type(self)).items() if isinstance(v, GraphProperty))
         for field in fields:
             getattr(self, field)
@@ -82,7 +82,7 @@ class Model(abc.ABC):
     def predictions(self):
         ...
 
-        
+    
     @graph_property
     def global_step(self):
         return tf.Variable(0, name = 'global_step', trainable = False)
