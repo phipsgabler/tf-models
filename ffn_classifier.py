@@ -5,10 +5,10 @@ from builders import fully_connected_layer
 
 
 class FFNClassifier(ModelBase):
-    def __init__(self, input_size, n_classes, hidden_layers, optimizer):
+    def __init__(self, input_size, n_classes, hidden_layer_sizes, optimizer):
         self.input_size = input_size
         self.n_classes = n_classes
-        self.hidden_layers = hidden_layers
+        self.hidden_layer_sizes = hidden_layer_sizes
         self.optimizer = optimizer
 
         super().__init__()
@@ -28,7 +28,7 @@ class FFNClassifier(ModelBase):
     def logits(self):
         # construct hidden layers
         layers = [self.inputs]
-        layer_sizes = [self.input_size] + self.hidden_layers
+        layer_sizes = [self.input_size] + self.hidden_layer_sizes
 
         for i in range(1, len(layer_sizes)):
             layers.append(fully_connected_layer('full{}'.format(i),

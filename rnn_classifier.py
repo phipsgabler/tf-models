@@ -45,7 +45,7 @@ class RNNClassifier(ModelBase):
 
     
     @graph_property
-    def hidden_output(self):
+    def logits(self):
         hidden_layers = [self.recurrent_output]
         layer_sizes = [self.recurrent_layer_size] + self.hidden_layer_sizes
 
@@ -56,13 +56,8 @@ class RNNClassifier(ModelBase):
                                           layer_sizes[i])
             hidden_layers.append(layer)
 
-        return hidden_layers[-1]
-
-
-    @graph_property
-    def logits(self):
         return fully_connected_layer('logits',
-                                     self.hidden_output,
+                                     hidden_layers[-1],
                                      self.hidden_layer_sizes[-1],
                                      self.n_classes,
                                      activation = lambda x: x)
