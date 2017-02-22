@@ -40,3 +40,6 @@ if __name__ == '__main__':
         ffn_example()
     elif sys.argv[1] == 'rnn':
         rnn_example()
+    else:
+        print('Unknown argument "{}"'.format(sys.argv[1]))
+        sys.exit(1)
