@@ -9,7 +9,7 @@ from rnn_classifier import RNNClassifier
 
 
 def ffn_example():
-    with FFNClassifier(2, [10], 2, tf.train.AdamOptimizer(0.01)).with_session() as model:
+    with FFNClassifier(2, 2, [10], tf.train.AdamOptimizer(0.01)).with_session() as model:
         samples = [[1.0, 2.0], [2.0, 1.0]]
         targets = [0, 1]
 
@@ -31,6 +31,7 @@ def rnn_example():
             model.train_on_batch(samples, [0, 1])
         print(model.accuracy_on_batch(samples, [0, 1]))
 
+        
 if __name__ == '__main__':
     if len(sys.argv) == 1:
         print('Nothing happens...')
