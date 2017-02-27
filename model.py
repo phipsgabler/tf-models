@@ -31,7 +31,8 @@ class ModelBase(abc.ABC):
         self._graph = tf.Graph()
         
         # initialize all properties
-        fields = (k for k, v in vars(type(self)).items() if isinstance(v, GraphProperty))
+        cls = type(self)
+        fields = (k for k in dir(cls) if isinstance(getattr(cls, k), GraphProperty))
         for field in fields:
             getattr(self, field)
 
