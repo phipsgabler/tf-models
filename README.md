@@ -1,3 +1,5 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 # tf-models
 
 This repository contains a few implementations of TensorFlow models I've used so far (at university), cleaned
